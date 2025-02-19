@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import "@/src/app/styles";
+import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
+
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const roboto = Roboto({
+	variable: "--font-roboto",
+	subsets: ["latin"],
+	weight: "500",
+});
 
 export const metadata: Metadata = {
 	title: "BrainAI",
@@ -14,7 +23,11 @@ export function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body
+				className={`${inter.variable} ${roboto.variable} antialiased bg-weak-100`}
+			>
+				{children}
+			</body>
 		</html>
 	);
 }
