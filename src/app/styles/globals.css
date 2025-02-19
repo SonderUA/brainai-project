@@ -1,3 +1,98 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+	--color-*: initial;
+	/* Colors */
+	--color-transparent: transparent;
+	--color-current: currentColor;
+
+	/* Weak Colors */
+	--color-weak-100: #f6f8fa;
+
+	/* Primary Colors */
+	--color-primary-100: #d3bbfb;
+	--color-primary-200: #b894f8;
+	--color-primary-300: #9c6cf4;
+	--color-primary-400: #8352f0;
+	--color-primary-500: #6912d4;
+	--color-primary-600: #530ea9;
+	--color-primary-700: #3e0b80;
+	--color-primary-800: #2a0856;
+	--color-primary-900: #16042c;
+
+	/* Neutral Colors */
+	--color-neutral-100: #7e7f83;
+	--color-neutral-200: #5e5f63;
+	--color-neutral-300: #3f4044;
+	--color-neutral-400: #2f3033;
+	--color-neutral-500: #202126;
+	--color-neutral-600: #1a1b1e;
+	--color-neutral-700: #151618;
+	--color-neutral-800: #101113;
+	--color-neutral-900: #0a0b0c;
+
+	/* White Colors */
+	--color-white-100: #d9d9d9;
+	--color-white-200: #e6e6e6;
+	--color-white-300: #f2f2f2;
+	--color-white-400: #ffffff;
+	--color-white-500: #ffffff;
+	--color-white-600: #cccccc;
+	--color-white-700: #bfbfbf;
+	--color-white-800: #b3b3b3;
+	--color-white-900: #a6a6a6;
+
+	/* Yellow Colors */
+	--color-yellow-100: #ffe1b0;
+	--color-yellow-200: #ffcf89;
+	--color-yellow-300: #ffbc63;
+	--color-yellow-400: #ffa93d;
+	--color-yellow-500: #fb9a2b;
+	--color-yellow-600: #c87a22;
+	--color-yellow-700: #965919;
+	--color-yellow-800: #643911;
+	--color-yellow-900: #321808;
+
+	/* Purple Colors */
+	--color-purple-100: #f2a3d5;
+	--color-purple-200: #e773c1;
+	--color-purple-300: #db43ac;
+	--color-purple-400: #d01398;
+	--color-purple-500: #ce169b;
+	--color-purple-600: #a2117a;
+	--color-purple-700: #770d5b;
+	--color-purple-800: #4c093c;
+	--color-purple-900: #21051e;
+
+	/* Blue Colors */
+	--color-blue-100: #aff6fe;
+	--color-blue-200: #80f1fe;
+	--color-blue-300: #51ebfe;
+	--color-blue-400: #22e6fe;
+	--color-blue-500: #15e4fe;
+	--color-blue-600: #11b9cb;
+	--color-blue-700: #0d8e99;
+	--color-blue-800: #086366;
+	--color-blue-900: #043934;
+
+	/* Disabled Colors */
+	--color-disabled-100: #cdd0d5;
+
+	--color-stroke-100: #e0daf3;
+	--primary-gradient: linear-gradient(
+		97deg,
+		#6912d4 15.89%,
+		#ce169b 69.34%,
+		#fb9a2b 103.4%
+	);
+	--text-gradient: linear-gradient(180deg, #2a0856 3.12%, #3e0b80 80.21%);
+}
+
+@layer base {
+	.bg-primary-gradient {
+		background-image: var(--primary-gradient);
+	}
+	.bg-text-gradient {
+		background-image: var(--text-gradient);
+	}
+}
