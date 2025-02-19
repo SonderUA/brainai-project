@@ -89,10 +89,29 @@
 }
 
 @layer base {
+	button {
+		cursor: pointer;
+	}
 	.bg-primary-gradient {
 		background-image: var(--primary-gradient);
 	}
 	.bg-text-gradient {
 		background-image: var(--text-gradient);
+	}
+	.gradient-border {
+		position: relative;
+		background-clip: padding-box;
+	}
+	.gradient-border::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		margin: -1px;
+		border-radius: 0.7rem;
+		background: var(--primary-gradient);
 	}
 }
