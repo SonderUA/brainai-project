@@ -1,7 +1,4 @@
 "use client";
-import Image from "next/image";
-import TokensImage from "@/public/tokens.svg";
-import ArrowDown from "@/public/down-icon.svg";
 
 interface ProfileProps {
 	username: string;
