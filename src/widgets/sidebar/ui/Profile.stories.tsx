@@ -1,11 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import "@/src/app/styles";
+import { RouterContext } from "@/src/shared/mocks";
+import { action } from "@storybook/addon-actions";
 
 import { Profile } from "./Profile";
+
+const mockRouter = {
+	push: action("router.push"),
+	replace: action("router.replace"),
+};
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
 	title: "BrainAI/Widgets/Sidebar/Profile",
+	decorators: [
+		(Story) => (
+			<RouterContext.Provider value={mockRouter}>
+				<Story />
+			</RouterContext.Provider>
+		),
+	],
 	component: Profile,
 	parameters: {
 		// Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
