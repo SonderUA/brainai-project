@@ -1,5 +1,4 @@
-"use client";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface ProfileProps {
 	username: string;
@@ -9,7 +8,6 @@ interface ProfileProps {
 }
 
 export const Profile = ({ username, tokens, plan, img }: ProfileProps) => {
-	const router = useRouter();
 	return (
 		<section className="flex flex-col p-2.5 rounded-lg gap-2.5 bg-primary-gradient w-fit">
 			<div className="flex justify-between items-center">
@@ -35,14 +33,14 @@ export const Profile = ({ username, tokens, plan, img }: ProfileProps) => {
 						Tokens {tokens}/45
 					</p>
 				</div>
-				<button
+				<Link
+					href="/premium-plans"
 					className="py-1 px-1.5 rounded-full bg-white-500 text-xs"
-					onClick={() => router.push("/premium-plans")}
 				>
 					<span className="bg-primary-gradient bg-clip-text text-transparent">
 						Upgrades
 					</span>
-				</button>
+				</Link>
 			</div>
 		</section>
 	);
