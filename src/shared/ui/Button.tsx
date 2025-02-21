@@ -31,8 +31,9 @@ const buttonVariants = cva(
 				large: ["text-base", "py-[0.8125rem]"],
 			},
 			color: {
-				white: "bg-white-500",
+				transparent: "bg-transparent",
 				gray: "bg-weak-100",
+				white: "bg-white-500",
 			},
 			icon: {
 				true: "",
@@ -58,7 +59,7 @@ const buttonVariants = cva(
 		defaultVariants: {
 			intent: "primary",
 			size: "medium",
-			color: "gray",
+			color: "transparent",
 		},
 	}
 );
@@ -73,7 +74,7 @@ export interface ButtonProps
 	/** Size of the button */
 	size?: "small" | "medium" | "large";
 	/** Button color */
-	color?: "white" | "gray";
+	color?: "transparent" | "gray" | "white";
 	/** Is there only an icon? */
 	icon?: boolean;
 	/** Button icon svg */
