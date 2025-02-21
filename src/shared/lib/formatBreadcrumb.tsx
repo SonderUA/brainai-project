@@ -26,7 +26,12 @@ export const formatBreadcrumb = (path: string): React.ReactNode => {
 		// Insert the SVG separator if not the last segment
 		if (idx < formattedSegments.length - 1) {
 			breadcrumbNodes.push(
-				<img src="/next.svg" alt="a next icon" className="w-4 h-4" />
+				<img
+					src="/next.svg"
+					key={`icon-${idx}`}
+					alt="a next icon"
+					className="w-4 h-4"
+				/>
 			);
 		}
 	});
