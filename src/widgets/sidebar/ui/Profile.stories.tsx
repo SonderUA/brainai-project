@@ -25,6 +25,12 @@ export const Default: Story = {
 		username: "uisaleh",
 		tokens: 100,
 		plan: "personal",
-		img: <img src="/image.svg" alt="user picture" className="w-9 h-9" />,
+		img: (
+			<img
+				src="/sidebar/user.svg"
+				alt="user picture"
+				className="w-9 h-9"
+			/>
+		),
 	},
 };

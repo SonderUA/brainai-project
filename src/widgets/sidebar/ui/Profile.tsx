@@ -20,7 +20,7 @@ export const Profile = ({ username, tokens, plan, img }: ProfileProps) => {
 				</div>
 				<button aria-label="Toggle dropdown" className="sm:hidden">
 					<img
-						src="/down-icon.svg"
+						src="/sidebar/down-icon.svg"
 						alt="a dropdown"
 						className="w-6 h-6"
 					/>
@@ -28,7 +28,11 @@ export const Profile = ({ username, tokens, plan, img }: ProfileProps) => {
 			</div>
 			<div className="flex items-center gap-2.5">
 				<div className="flex items-center gap-0.5 flex-shrink-0">
-					<img src="/tokens.svg" alt="tokens" className="w-5 h-5" />
+					<img
+						src="/sidebar/tokens.svg"
+						alt="tokens"
+						className="w-5 h-5"
+					/>
 					<p className="text-white-500 text-xs tracking-wide">
 						Tokens {tokens}/45
 					</p>
