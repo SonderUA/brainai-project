@@ -41,7 +41,7 @@ export const Profile = ({ username, tokens, plan, img }: ProfileProps) => {
 					href="/premium-plans"
 					className="py-1 px-1.5 rounded-full bg-white-500 text-xs"
 				>
-					<span className="bg-primary-gradient bg-clip-text text-transparent">
+					<span className="bg-primary-gradient bg-clip-text text-transparent text-xs">
 						Upgrades
 					</span>
 				</Link>
