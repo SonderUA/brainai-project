@@ -35,24 +35,35 @@ export const Navbar = () => {
 						<img
 							src="/sidebar/facebook.svg"
 							alt="a facebook logo"
+							className="w-5 h-5"
 						/>
 					</Link>
 					<Link href="https://www.blogger.com">
-						<img src="/sidebar/blogger.svg" alt="a blogger logo" />
+						<img
+							src="/sidebar/blogger.svg"
+							alt="a blogger logo"
+							className="w-5 h-5"
+						/>
 					</Link>
 					<Link href="https://www.messenger.com">
 						<img
 							src="/sidebar/messenger.svg"
 							alt="a messenger logo"
+							className="w-5 h-5"
 						/>
 					</Link>
 					<Link href="https://www.youtube.com">
-						<img src="/sidebar/youtube.svg" alt="a youtube logo" />
+						<img
+							src="/sidebar/youtube.svg"
+							alt="a youtube logo"
+							className="w-5 h-5"
+						/>
 					</Link>
 					<Link href="https://www.whatsapp.com">
 						<img
 							src="/sidebar/whatsapp.svg"
 							alt="a whatsapp logo"
+							className="w-5 h-5"
 						/>
 					</Link>
 				</div>

@@ -5,7 +5,11 @@ export const Sidebar = () => {
 		<aside className="flex flex-col gap-6 flex-shrink-0">
 			<div className="flex flex-col gap-6 flex-shrink-0">
 				<h1>
-					<img src="/sidebar/logo.svg" alt="a company logo" />
+					<img
+						src="/sidebar/logo.svg"
+						alt="a company logo"
+						className="[10.75rem] h-9"
+					/>
 				</h1>
 				<Profile
 					username="uisaleh"
