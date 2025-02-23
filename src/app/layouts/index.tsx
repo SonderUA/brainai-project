@@ -29,7 +29,7 @@ export function RootLayout({
 			<body
 				className={`${inter.variable} ${roboto.variable} antialiased bg-weak-100`}
 			>
-				<div className="flex h-auto gap-6 p-6 min-h-screen flex-col md:flex-row">
+				<div className="flex h-auto gap-6 p-6 min-h-screen flex-col lg-tablet:flex-row">
 					<Sidebar />
 					<Providers>
 						<main className="flex flex-col flex-grow p-5 gap-5 bg-white-500 rounded-2xl min-h-full border border-disabled-100">
@@ -40,5 +40,21 @@ export function RootLayout({
 				</div>
 			</body>
 		</html>
+	);
+}
+
+export function StorybookLayout({ children }: { children: React.ReactNode }) {
+	return (
+		<div className="antialiased bg-weak-100">
+			<div className="flex h-auto gap-6 p-6 min-h-screen flex-col lg-tablet:flex-row">
+				<Sidebar />
+				<Providers>
+					<main className="flex flex-col flex-grow p-5 gap-5 bg-white-500 rounded-2xl min-h-full border border-disabled-100">
+						<Navigation />
+						{children}
+					</main>
+				</Providers>
+			</div>
+		</div>
 	);
 }
