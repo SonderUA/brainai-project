@@ -2,7 +2,7 @@ import { Navbar } from "./Navbar";
 import { Profile } from "./Profile";
 export const Sidebar = () => {
 	return (
-		<aside className="flex flex-col gap-6 flex-shrink-0">
+		<aside className="flex lg-tablet:flex-col gap-6 flex-shrink-0">
 			<div className="flex flex-col gap-6 flex-shrink-0">
 				<h1>
 					<img
