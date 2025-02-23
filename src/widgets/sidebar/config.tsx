@@ -1,3 +1,5 @@
+import { ArticleIcon, ImageIcon, VideoIcon } from "@/src/shared/ui/icons";
+
 export const MainLinks = [
 	[
 		{
@@ -14,35 +16,17 @@ export const MainLinks = [
 		{
 			href: "/article-generation/prompt",
 			text: "Article Generation",
-			svg: (
-				<img
-					src="/sidebar/article.svg"
-					alt="a pen"
-					className="w-5 h-5"
-				/>
-			),
+			svg: <ArticleIcon color="black" className="w-5 h-5" />,
 		},
 		{
 			href: "/image-creation",
 			text: "Image Creation",
-			svg: (
-				<img
-					src="/sidebar/image.svg"
-					alt="an image"
-					className="w-5 h-5"
-				/>
-			),
+			svg: <ImageIcon color="black" className="w-5 h-5" />,
 		},
 		{
 			href: "/video-creation",
 			text: "Video Creation",
-			svg: (
-				<img
-					src="/sidebar/video.svg"
-					alt="a video player"
-					className="w-5 h-5"
-				/>
-			),
+			svg: <VideoIcon color="black" className="w-5 h-5" />,
 		},
 	],
 	[
