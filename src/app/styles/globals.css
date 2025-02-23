@@ -2,6 +2,17 @@
 
 @theme {
 	--color-*: initial;
+	--breakpoint-*: initial;
+
+	/* Breakpoints */
+	--breakpoint-sm-mobile: 24rem;
+	--breakpoint-lg-mobile: 33rem;
+	--breakpoint-sm-tablet: 42rem;
+	--breakpoint-lg-tablet: 50rem;
+	--breakpoint-sm-laptop: 56rem;
+	--breakpoint-lg-laptop: 70rem;
+	--breakpoint-desktop: 88rem;
+
 	/* Colors */
 	--color-transparent: transparent;
 	--color-current: currentColor;
@@ -89,6 +100,10 @@
 }
 
 @layer base {
+	* {
+		font-size: clamp(16px, calc(-0.89px + 1.06vw), 54px);
+		font-size: clamp(7px, calc(0.57px + 2.92vw), 16px);
+	}
 	button {
 		cursor: pointer;
 	}
