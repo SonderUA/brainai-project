@@ -6,6 +6,8 @@ interface NextIconProps {
 export const NextIcon = ({ active, rotate = false }: NextIconProps) => {
 	return (
 		<svg
+			role="img"
+			aria-label="a right facing arrow"
 			className={`w-6 h-6 ${rotate ? "rotate-180" : ""}`}
 			viewBox="0 0 24 24"
 			fill="none"
