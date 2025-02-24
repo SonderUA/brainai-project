@@ -40,10 +40,10 @@ export const Navigation = () => {
 
 	return (
 		<div className="flex gap-2.5 items-center">
-			<button onClick={handleBack} className="text-disabled-100">
+			<button onClick={handleBack}>
 				<NextIcon active={nav.currentIndex > 0} rotate />
 			</button>
-			<button onClick={handleForward} className="c">
+			<button onClick={handleForward}>
 				<NextIcon active={nav.currentIndex != nav.history.length - 1} />
 			</button>
 			<div className="capitalize text-neutral-500 text-sm font-medium flex items-center gap-0.5">
