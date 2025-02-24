@@ -19,11 +19,14 @@ export const NavbarMobile = () => {
 		<nav className="flex flex-col w-full gap-2">
 			<div className="flex w-full gap-2 items-center">
 				{accordions.map((accordion, idx) => (
-					<div className="flex flex-grow basis-20 flex-col" key={idx}>
+					<div
+						className="flex flex-grow basis-20 flex-col min-w-fit"
+						key={idx}
+					>
 						<button
 							type="button"
 							onClick={() => handleToggle(idx)}
-							className="flex justify-between items-center w-full text-left font-medium pl-3 px-2 py-2.5 border border-neutral-500 rounded-lg text-nowrap"
+							className="flex justify-between flex-grow gap-2 items-center w-full text-left font-medium pl-3 px-2 py-2.5 border border-neutral-500 rounded-lg text-nowrap"
 						>
 							{accordion}
 							<img
