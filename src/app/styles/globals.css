@@ -102,7 +102,11 @@
 @layer base {
 	* {
 		font-size: clamp(16px, calc(-0.89px + 1.06vw), 54px);
-		font-size: clamp(7px, calc(0.57px + 2.92vw), 16px);
+	}
+	@media (max-width: 528px) {
+		* {
+			font-size: clamp(7px, calc(0.57px + 2.92vw), 16px);
+		}
 	}
 	button {
 		cursor: pointer;
