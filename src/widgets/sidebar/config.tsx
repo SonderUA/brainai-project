@@ -1,5 +1,11 @@
 import { ArticleIcon, ImageIcon, VideoIcon } from "@/src/shared/ui/icons";
 
+export interface LinkItem {
+	href: string;
+	text: string;
+	svg: React.ReactNode;
+}
+
 export const MainLinks = [
 	[
 		{
@@ -124,4 +130,32 @@ export const MainLinks = [
 			),
 		},
 	],
+];
+
+export const FooterLinks = [
+	{
+		href: "https://www.facebook.com",
+		src: "/sidebar/facebook.svg",
+		alt: "a facebook logo",
+	},
+	{
+		href: "https://www.blogger.com",
+		src: "/sidebar/blogger.svg",
+		alt: "a blogger logo",
+	},
+	{
+		href: "https://www.messenger.com",
+		src: "/sidebar/messenger.svg",
+		alt: "a messenger logo",
+	},
+	{
+		href: "https://www.youtube.com",
+		src: "/sidebar/youtube.svg",
+		alt: "a youtube logo",
+	},
+	{
+		href: "https://www.whatsapp.com",
+		src: "/sidebar/whatsapp.svg",
+		alt: "a whatsapp logo",
+	},
 ];
