@@ -21,7 +21,6 @@ type Story = StoryObj<typeof meta>;
 export const Article: Story = {
 	args: {
 		href: "article-generation/video",
-		text: "Video to Article",
 		amount: 365,
 	},
 };
@@ -29,15 +28,13 @@ export const Article: Story = {
 export const Image: Story = {
 	args: {
 		href: "image-creation/prompt",
-		text: "Prompt to Image",
 		amount: 109,
 	},
 };
 
 export const Video: Story = {
 	args: {
-		href: "image-creation/prompt",
-		text: "Prompt to Video",
+		href: "video-creation/prompt",
 		amount: 85,
 	},
 };

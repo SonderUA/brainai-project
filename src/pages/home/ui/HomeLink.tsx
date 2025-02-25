@@ -1,49 +1,57 @@
 import { ArticleIcon, ImageIcon, VideoIcon } from "@/src/shared/ui/icons";
 import Link from "next/link";
+import { capitalize } from "@/src/shared/lib";
+import { JSX } from "react";
 
 interface HomeLinkProps {
 	href: string;
-	text: string;
 	amount: number;
 	className?: string;
 }
 
-export const HomeLink = ({ href, text, amount, className }: HomeLinkProps) => {
-	const switchIcon = (text: string) => {
-		const choice = text.toLowerCase().split(" ").at(-1);
-		switch (choice) {
-			case "article":
-				return (
-					<ArticleIcon
-						color="white"
-						className="w-10 h-10 p-2 rounded-lg bg-purple-400"
-					/>
-				);
-			case "video":
-				return (
-					<VideoIcon
-						color="white"
-						className="w-10 h-10 p-2 rounded-lg bg-primary-400"
-					/>
-				);
-			case "image":
-				return (
-					<ImageIcon
-						color="white"
-						className="w-10 h-10 p-2 rounded-lg bg-yellow-400"
-					/>
-				);
-		}
-	};
+const iconMapping: Record<string, JSX.Element> = {
+	article: (
+		<ArticleIcon
+			color="white"
+			className="w-10 h-10 p-2 rounded-lg bg-purple-400"
+		/>
+	),
+	video: (
+		<VideoIcon
+			color="white"
+			className="w-10 h-10 p-2 rounded-lg bg-primary-400"
+		/>
+	),
+	image: (
+		<ImageIcon
+			color="white"
+			className="w-10 h-10 p-2 rounded-lg bg-yellow-400"
+		/>
+	),
+};
+
+const formatLabel = (source: string, output: string) => {
+	return `${capitalize(source)} to ${capitalize(output)}`;
+};
+
+export const HomeLink = ({ href, amount, className }: HomeLinkProps) => {
+	const segments = href.split("/");
+
+	const source = segments[1];
+	const output = segments[0].split("-")[0];
+
+	const icon = iconMapping[output];
+	const label = formatLabel(source, output);
+
 	return (
 		<Link
 			href={href}
 			className={`flex p-3.5 rounded-[0.625rem] justify-between items-center bg-weak-100 font-{--font-roboto} ${className}`}
 		>
 			<div className="flex gap-2.5">
-				{switchIcon(text)}
+				{icon}
 				<div className="flex flex-col">
-					<p className="font-medium">{text}</p>
+					<p className="font-medium">{label}</p>
 					<p className="text-xs">{amount} Generated</p>
 				</div>
 			</div>
