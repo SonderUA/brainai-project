@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { capitalize } from "./capitalize";
 
 export const formatBreadcrumb = (path: string): React.ReactNode => {
 	if (!path || path === "/") return "Home";
@@ -18,9 +19,7 @@ export const formatBreadcrumb = (path: string): React.ReactNode => {
 	const breadcrumbNodes: React.ReactNode[] = [];
 	formattedSegments.forEach((segment, idx) => {
 		breadcrumbNodes.push(
-			<span key={`seg-${idx}`} className="capitalize">
-				{segment}
-			</span>
+			<Fragment key={`seg-${idx}`}>{capitalize(segment)}</Fragment>
 		);
 
 		// Insert the SVG separator if not the last segment
