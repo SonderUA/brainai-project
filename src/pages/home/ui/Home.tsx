@@ -34,7 +34,6 @@ export default function Home() {
 						<HomeLink
 							key={idx}
 							href={linkElement.href}
-							text={linkElement.text}
 							amount={linkElement.amount}
 						/>
 					))}
