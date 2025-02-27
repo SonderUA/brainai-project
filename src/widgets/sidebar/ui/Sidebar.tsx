@@ -5,20 +5,16 @@ import { Navbar } from "./Navbar";
 import { NavbarMobile } from "./NavbarMobile";
 import { Profile } from "./Profile";
 import { useWindowWidth } from "@/src/shared/hooks";
+import { User } from "@prisma/client";
 
 export const Sidebar = () => {
 	const windowWidth = useWindowWidth();
-	const [tokens, setTokens] = useState<number | null>(null);
+	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
 	const session = useSession();
 
 	useEffect(() => {
-		async function fetchUser(email: string | null | undefined) {
-			if (!email) {
-				setTokens(0);
-				setLoading(false);
-				return;
-			}
+		async function fetchUser(email: string) {
 			try {
 				const response = await fetch(
 					`/api/user?email=${encodeURIComponent(email)}`
@@ -27,17 +23,16 @@ export const Sidebar = () => {
 					throw new Error(`Error: ${response.statusText}`);
 				}
 				const result = await response.json();
-				console.log(result?.tokens);
-				setTokens(result?.tokens ?? 0);
+				const user = result[0];
+				setUser(user);
 			} catch (error) {
 				console.error("Failed to fetch user:", error);
-				setTokens(0);
 			} finally {
 				setLoading(false);
 			}
 		}
 		const email = session?.data?.user?.email;
-		fetchUser(email);
+		if (email) fetchUser(email);
 	}, [session?.data?.user?.email]);
 	return (
 		<aside className="flex flex-col gap-6 flex-shrink-0">
@@ -52,17 +47,16 @@ export const Sidebar = () => {
 				{windowWidth >= 672 && (
 					<Profile
 						username={
-							session.status === "loading"
-								? "Loading..."
-								: session?.data?.user?.name ?? "Guest"
+							loading ? "Loading..." : user?.name ?? "Guest"
 						}
-						tokens={loading ? 0 : tokens!}
+						tokens={user ? user.tokens : 0}
 						plan="personal"
 						img={
 							<img
 								src={
-									session?.data?.user?.image ??
-									"/sidebar/white.svg"
+									user && user.image
+										? user.image
+										: "/sidebar/white.svg"
 								}
 								alt="user picture"
 								className="w-9 h-9 rounded-4xl"
@@ -74,18 +68,15 @@ export const Sidebar = () => {
 
 			{windowWidth < 672 && (
 				<Profile
-					username={
-						session.status === "loading"
-							? "Loading..."
-							: session?.data?.user?.name ?? "Guest"
-					}
-					tokens={loading ? 0 : tokens!}
+					username={loading ? "Loading..." : user?.name ?? "Guest"}
+					tokens={user ? user.tokens : 0}
 					plan="personal"
 					img={
 						<img
 							src={
-								session?.data?.user?.image ??
-								"/sidebar/white.svg"
+								user && user.image
+									? user.image
+									: "/sidebar/white.svg"
 							}
 							alt="user picture"
 							className="w-9 h-9 rounded-4xl"
