@@ -1,56 +1,56 @@
 {
-  "name": "brainai-project",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_2054d3685c951a2"
-  },
-  "dependencies": {
-    "@auth/prisma-adapter": "^2.7.4",
-    "@aws-sdk/client-s3": "^3.750.0",
-    "@emotion/is-prop-valid": "^1.3.1",
-    "@prisma/client": "^6.4.1",
-    "@reduxjs/toolkit": "^2.5.1",
-    "@tailwindcss/postcss": "^4.0.7",
-    "class-variance-authority": "^0.7.1",
-    "framer-motion": "^12.4.7",
-    "next": "^15.2.0",
-    "next-auth": "^5.0.0-beta.25",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-redux": "^9.2.0",
-    "zod": "^3.24.2"
-  },
-  "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.4",
-    "@eslint/eslintrc": "^3",
-    "@storybook/addon-essentials": "^8.5.7",
-    "@storybook/addon-interactions": "^8.5.7",
-    "@storybook/blocks": "^8.5.7",
-    "@storybook/nextjs": "^8.5.7",
-    "@storybook/react": "^8.5.7",
-    "@storybook/test": "^8.5.7",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.6",
-    "eslint-plugin-storybook": "^0.11.3",
-    "postcss": "^8.5.2",
-    "prisma": "^6.4.1",
-    "storybook": "^8.5.7",
-    "tailwindcss": "^4.0.7",
-    "typescript": "^5"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
-  }
+	"name": "brainai-project",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "prisma generate && next dev --turbopack",
+		"build": "prisma generate && next build",
+		"start": "next start",
+		"lint": "next lint",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build",
+		"chromatic": "npx chromatic --project-token=chpt_2054d3685c951a2"
+	},
+	"dependencies": {
+		"@auth/prisma-adapter": "^2.7.4",
+		"@aws-sdk/client-s3": "^3.750.0",
+		"@emotion/is-prop-valid": "^1.3.1",
+		"@prisma/client": "^6.4.1",
+		"@reduxjs/toolkit": "^2.5.1",
+		"@tailwindcss/postcss": "^4.0.7",
+		"class-variance-authority": "^0.7.1",
+		"framer-motion": "^12.4.7",
+		"next": "^15.2.0",
+		"next-auth": "^5.0.0-beta.25",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-redux": "^9.2.0",
+		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "^3.2.4",
+		"@eslint/eslintrc": "^3",
+		"@storybook/addon-essentials": "^8.5.7",
+		"@storybook/addon-interactions": "^8.5.7",
+		"@storybook/blocks": "^8.5.7",
+		"@storybook/nextjs": "^8.5.7",
+		"@storybook/react": "^8.5.7",
+		"@storybook/test": "^8.5.7",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "15.1.6",
+		"eslint-plugin-storybook": "^0.11.3",
+		"postcss": "^8.5.2",
+		"prisma": "^6.4.1",
+		"storybook": "^8.5.7",
+		"tailwindcss": "^4.0.7",
+		"typescript": "^5"
+	},
+	"eslintConfig": {
+		"extends": [
+			"plugin:storybook/recommended"
+		]
+	}
 }
