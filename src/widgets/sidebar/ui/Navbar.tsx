@@ -5,7 +5,7 @@ import { Footer } from "./Footer";
 
 export const Navbar = () => {
 	return (
-		<nav className="flex flex-col w-full">
+		<nav className="flex flex-col w-full max-lg-tablet:hidden">
 			{MainLinks.map((group, groupIndex) => (
 				<Fragment key={groupIndex}>
 					<ul className="font-{--font-roboto}">

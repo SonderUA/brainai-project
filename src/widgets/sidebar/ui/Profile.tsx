@@ -5,11 +5,20 @@ interface ProfileProps {
 	tokens: number;
 	plan: string;
 	img?: React.ReactElement;
+	className?: string;
 }
 
-export const Profile = ({ username, tokens, plan, img }: ProfileProps) => {
+export const Profile = ({
+	username,
+	tokens,
+	plan,
+	img,
+	className,
+}: ProfileProps) => {
 	return (
-		<section className="flex max-lg-tablet:justify-between max-lg-tablet:w-full lg-tablet:flex-col p-2.5 rounded-lg gap-2.5 bg-primary-gradient w-fit">
+		<section
+			className={`flex max-lg-tablet:justify-between max-lg-tablet:w-full lg-tablet:flex-col p-2.5 rounded-lg gap-2.5 bg-primary-gradient w-fit ${className}`}
+		>
 			<div className="flex gap-2.5 items-center">
 				{img}
 				<div className="flex flex-col text-white-500">

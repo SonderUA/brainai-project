@@ -22,14 +22,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		username: "uisaleh",
-		tokens: 100,
+		username: "SonderUA",
+		tokens: 58,
 		plan: "personal",
 		img: (
 			<img
-				src="/sidebar/user.svg"
+				src="https://avatars.githubusercontent.com/u/163440629?v=4"
 				alt="user picture"
-				className="w-9 h-9"
+				className="w-9 h-9 rounded-4xl"
 			/>
 		),
 	},

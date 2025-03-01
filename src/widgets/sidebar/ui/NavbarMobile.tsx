@@ -4,11 +4,9 @@ import { Footer } from "./Footer";
 import { MainLinks } from "../config";
 import { AnimatePresence, motion } from "framer-motion";
 import { Navlink } from "@/src/shared/ui";
-import { useWindowWidth } from "@/src/shared/hooks";
 
 export const NavbarMobile = () => {
 	const [activeIndex, setActiveIndex] = useState<number | null>(null);
-	const windowWidth = useWindowWidth();
 	const accordions = ["Dashboard", "My Account", "More"];
 
 	const handleToggle = (index: number) => {
@@ -16,7 +14,7 @@ export const NavbarMobile = () => {
 	};
 
 	return (
-		<nav className="flex flex-col w-full gap-2">
+		<nav className="flex flex-col w-full gap-2 lg-tablet:hidden">
 			<div className="flex w-full gap-2 items-center">
 				{accordions.map((accordion, idx) => (
 					<div
@@ -39,9 +37,7 @@ export const NavbarMobile = () => {
 						</button>
 					</div>
 				))}
-				{windowWidth >= 672 && windowWidth < 800 && (
-					<Footer className="w-50 ml-2" />
-				)}
+				<Footer className="w-50 ml-2 hidden sm-tablet:block" />
 			</div>
 			<div className="overflow-hidden">
 				<AnimatePresence>
@@ -69,9 +65,7 @@ export const NavbarMobile = () => {
 					)}
 				</AnimatePresence>
 			</div>
-			{windowWidth < 672 && (
-				<Footer className="w-3/5 mx-auto max-lg-mobile:w-full" />
-			)}
+			<Footer className="w-3/5 mx-auto max-lg-mobile:w-full sm-tablet:hidden" />
 		</nav>
 	);
 };
