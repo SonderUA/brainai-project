@@ -1,27 +1,46 @@
-import { NextRequest } from "next/server";
-import { prisma } from "@/prisma";
+import { NextRequest, NextResponse } from "next/server";
+import {
+	handleGetUser,
+	handleUpdateUser,
+	handleDeleteUser,
+} from "@/server/features/user/user.controller";
 
 export async function GET(request: NextRequest) {
-	const userEmail = request.nextUrl.searchParams.get("email");
+	const { searchParams } = new URL(request.url);
+	const id = searchParams.get("id");
+	if (!id) {
+		return NextResponse.json(
+			{ error: "User id is required" },
+			{ status: 400 }
+		);
+	}
+	return await handleGetUser(id);
+}
 
-	if (!userEmail) {
-		return new Response("Missing required parameter in the URL", {
-			status: 400,
-		});
+export async function PUT(request: NextRequest) {
+	const data = await request.json();
+	const { id, ...updateData } = data;
+
+	if (!id) {
+		return NextResponse.json(
+			{ error: "User id is required for update" },
+			{ status: 400 }
+		);
 	}
 
-	const user = await prisma.user.findMany({
-		where: {
-			email: userEmail,
-		},
-	});
+	return await handleUpdateUser(id, updateData);
+}
 
-	if (!user) {
-		return new Response("User is not logged in", { status: 400 });
+export async function DELETE(request: NextRequest) {
+	// Expecting a query parameter like: /api/user?id=...
+	const id = request.nextUrl.searchParams.get("id");
+
+	if (!id) {
+		return NextResponse.json(
+			{ error: "User id is required" },
+			{ status: 400 }
+		);
 	}
 
-	return new Response(JSON.stringify(user), {
-		status: 200,
-		headers: { "Content-Type": "application/json" },
-	});
+	return await handleDeleteUser(id);
 }
