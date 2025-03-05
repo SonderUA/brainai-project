@@ -11,22 +11,13 @@ interface HomeLinkProps {
 
 const iconMapping: Record<string, JSX.Element> = {
 	article: (
-		<ArticleIcon
-			color="white"
-			className="w-10 h-10 p-2 rounded-lg bg-purple-400"
-		/>
+		<ArticleIcon className="w-10 h-10 p-2 rounded-lg bg-purple-400 text-white-500" />
 	),
 	video: (
-		<VideoIcon
-			color="white"
-			className="w-10 h-10 p-2 rounded-lg bg-primary-400"
-		/>
+		<VideoIcon className="w-10 h-10 p-2 rounded-lg bg-primary-400 text-white-500" />
 	),
 	image: (
-		<ImageIcon
-			color="white"
-			className="w-10 h-10 p-2 rounded-lg bg-yellow-400"
-		/>
+		<ImageIcon className="w-10 h-10 p-2 rounded-lg bg-yellow-400 text-white-500" />
 	),
 };
 

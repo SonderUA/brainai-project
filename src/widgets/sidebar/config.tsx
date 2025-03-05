@@ -22,17 +22,17 @@ export const MainLinks = [
 		{
 			href: "/article-generation/prompt",
 			text: "Article Generation",
-			svg: <ArticleIcon color="black" className="w-5 h-5" />,
+			svg: <ArticleIcon className="w-5 h-5" />,
 		},
 		{
 			href: "/image-creation",
 			text: "Image Creation",
-			svg: <ImageIcon color="black" className="w-5 h-5" />,
+			svg: <ImageIcon className="w-5 h-5" />,
 		},
 		{
 			href: "/video-creation",
 			text: "Video Creation",
-			svg: <VideoIcon color="black" className="w-5 h-5" />,
+			svg: <VideoIcon className="w-5 h-5" />,
 		},
 	],
 	[
