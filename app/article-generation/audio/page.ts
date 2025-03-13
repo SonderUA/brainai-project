@@ -1,1 +1,1 @@
-export { Example as default } from "@/src/pages/example";
+export { ArticleInput as default } from "@/src/pages/article-generation";

@@ -1,1 +1,6 @@
-export { Example as default } from "@/src/pages/example";
+import { redirect } from "next/navigation";
+
+export default function ArticlePage() {
+	redirect("/article-generation/prompt");
+	return null;
+}
