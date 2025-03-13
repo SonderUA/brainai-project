@@ -8,17 +8,14 @@ export const Sidebar = async () => {
 	const session = await auth();
 
 	let user: User | null = null;
-	if (session?.user?.id) {
-		const response = await fetch(
-			`http://localhost:3000/api/user?id=${encodeURIComponent(
-				session.user.id
-			)}`,
-			{
-				next: { revalidate: 60 },
-			}
-		);
-		user = await response.json();
-	}
+	// if (session?.user?.id) {
+	// 	const response = await fetch(
+	// 		`http://localhost:3000/api/user?id=${encodeURIComponent(
+	// 			session.user.id
+	// 		)}`
+	// 	);
+	// 	user = await response.json();
+	// }
 
 	return (
 		<aside className="flex flex-col gap-6 flex-shrink-0">
