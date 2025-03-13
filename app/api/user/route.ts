@@ -32,7 +32,6 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-	// Expecting a query parameter like: /api/user?id=...
 	const id = request.nextUrl.searchParams.get("id");
 
 	if (!id) {

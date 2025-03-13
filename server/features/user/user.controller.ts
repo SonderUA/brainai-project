@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getUserById, updateUser, deleteUser } from "./user.service";
 
+// TODO: add JSDoc documentation
 export async function handleGetUser(id: string) {
 	try {
 		const user = await getUserById(id);
