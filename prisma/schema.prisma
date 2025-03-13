@@ -1,6 +1,6 @@
 datasource db {
   url      = env("DATABASE_URL")
-  provider = "mysql"
+  provider = "postgresql"
 }
 
 generator client {
@@ -16,7 +16,7 @@ model User {
   tokens        Int             @default(0)
   accounts      Account[]
   sessions      Session[]
-  websites      Website[]
+  articles      Article[]
   images        Image[]
  
   createdAt DateTime @default(now())
@@ -34,20 +34,17 @@ model Image {
   updatedAt DateTime @updatedAt
 }
 
-model Website {
-  id        String @id @default(cuid())
-  name      String
-  url       String
-  api_token  String
+model Article {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  prompt    String
+  type      String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
-  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@unique([userId, url])
 }
-
  
 model Account {
   userId            String
@@ -71,6 +68,7 @@ model Account {
 }
  
 model Session {
+  id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
