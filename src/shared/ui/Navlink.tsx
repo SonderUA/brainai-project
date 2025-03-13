@@ -26,11 +26,13 @@ export const Navlink = ({
 		return text;
 	};
 
+	const isSelected = format(pathname) === format(href);
+
 	return (
 		<Link
 			href={href}
 			className={`${center ? "justify-center" : ""} ${
-				format(pathname) === format(href)
+				isSelected
 					? main
 						? buttonVariants({
 								intent: "secondary",
@@ -45,10 +47,18 @@ export const Navlink = ({
 							intent: "tertiary",
 							size: "small",
 					  })
-			} ${className}`}
+			} ${isSelected ? "text-primary-800" : ""} ${className}`}
 		>
 			{svg !== undefined && svg}
-			{text}
+			<span
+				className={`text-inherit text-sm ${
+					isSelected && main
+						? "bg-text-gradient bg-clip-text text-transparent text-sm"
+						: ""
+				}`}
+			>
+				{text}
+			</span>
 		</Link>
 	);
 };
