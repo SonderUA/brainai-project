@@ -32,13 +32,13 @@ export function RootLayout({
 				<div className="flex h-auto gap-6 p-6 min-h-screen flex-col lg-tablet:flex-row">
 					<SessionProviders>
 						<Sidebar />
+						<Providers>
+							<main className="flex flex-col flex-grow p-5 gap-5 bg-white-500 rounded-2xl min-h-full border border-disabled-100">
+								<Navigation />
+								{children}
+							</main>
+						</Providers>
 					</SessionProviders>
-					<Providers>
-						<main className="flex flex-col flex-grow p-5 gap-5 bg-white-500 rounded-2xl min-h-full border border-disabled-100">
-							<Navigation />
-							{children}
-						</main>
-					</Providers>
 				</div>
 			</body>
 		</html>
