@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-// FIXME: import { validateCreateArticle } from "./article.validator";
+import { validateCreateArticle } from "./article.validator";
 import { MediaProcessingService } from "@/server/shared/media/services/media.processing.service";
 import { OpenAIService } from "@/server/shared/services/open-ai.service";
 import { createArticle } from "./article.service";
@@ -10,6 +10,7 @@ import { MediaInputService } from "@/server/shared/media/services/media.input.se
 import { MediaConverterService } from "@/server/shared/media/services/media.converter.service";
 import { MediaExtractionService } from "@/server/shared/media/services/media.extraction.service";
 import { extractErrorMessage } from "@/server/shared/utils/extractError";
+import { ARTICLE_CREATION_COST } from "@/server/shared/constants";
 
 export interface CreateArticleInput {
 	userID: string;
@@ -69,7 +70,6 @@ export async function handleCreateArticle({
 		}
 
 		if (user.tokens < 0) {
-			// TODO: Extract token cost to a constant
 			const msg = "Insufficient amount of tokens";
 			logger.error(msg, { userID, correlationId });
 			return NextResponse.json(
@@ -141,18 +141,17 @@ export async function handleCreateArticle({
 		// Derive article title from content.
 		const title = content.slice(0, 50);
 		const data = { title, content, prompt, type: "article" };
-		// const validData = validateCreateArticle(data);
+		const validData = validateCreateArticle(data);
 
 		// Create the article.
-		const newArticle = await createArticle(userID, data);
+		const newArticle = await createArticle(userID, validData);
 		logger.info("Article created successfully", {
 			articleId: newArticle.id,
 			correlationId,
 		});
 
 		// Update user's tokens.
-		// FIXME: Change or extract the amount of tokens to be subtracted to a separate variable
-		const tokens = user.tokens + 15;
+		const tokens = user.tokens - ARTICLE_CREATION_COST;
 		await updateUser(userID, { tokens });
 		logger.info("User tokens updated", { userID, tokens, correlationId });
 

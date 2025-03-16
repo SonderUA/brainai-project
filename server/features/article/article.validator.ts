@@ -1,14 +1,13 @@
 import { z } from "zod";
 
-// FIXME: Implement zod validation for article input
 export const createArticleSchema = z.object({
-	title: z.string().min(3),
-	content: z.string().email(),
-	prompt: z.string().min(6),
-	type: z.string().min(6),
+	title: z.string().min(3, "Title must be at least 3 characters long"),
+	content: z.string().min(10, "Content must be at least 10 characters long"),
+	prompt: z.string().min(6, "Prompt must be at least 6 characters long"),
+	type: z.string().min(6, "Type must be at least 6 characters long"),
 });
 
-// You could also export functions that wrap these validations
+// Wrapper function to validate article data
 export function validateCreateArticle(data: any) {
 	return createArticleSchema.parse(data);
 }

@@ -1,0 +1,1 @@
+export const ARTICLE_CREATION_COST = 15;

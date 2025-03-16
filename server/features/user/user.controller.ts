@@ -1,8 +1,13 @@
 import { NextResponse } from "next/server";
 import { getUserById, updateUser, deleteUser } from "./user.service";
 
-// TODO: add JSDoc documentation
-export async function handleGetUser(id: string) {
+/**
+ * Handles user retrieval by their unique identifier.
+ *
+ * @param {string} id - The unique identifier of the user.
+ * @returns {Promise<NextResponse>} A JSON response containing the user data if found, or an error message with the appropriate HTTP status code.
+ */
+export async function handleGetUser(id: string): Promise<NextResponse> {
 	try {
 		const user = await getUserById(id);
 		if (!user) {
@@ -20,7 +25,17 @@ export async function handleGetUser(id: string) {
 	}
 }
 
-export async function handleUpdateUser(id: string, updateData: any) {
+/**
+ * Handles user information renewal.
+ *
+ * @param {string} id - The unique identifier of the user to update.
+ * @param {any} updateData - An object containing the fields to update.
+ * @returns {Promise<NextResponse>} A JSON response containing the updated user data if the update is successful, or an error message with the appropriate HTTP status code.
+ */
+export async function handleUpdateUser(
+	id: string,
+	updateData: any
+): Promise<NextResponse> {
 	try {
 		const updatedUser = await updateUser(id, updateData);
 		if (!updatedUser) {
@@ -38,7 +53,13 @@ export async function handleUpdateUser(id: string, updateData: any) {
 	}
 }
 
-export async function handleDeleteUser(id: string) {
+/**
+ * Handles user deletion by their unique identifier.
+ *
+ * @param {string} id - The unique identifier of the user to delete.
+ * @returns {Promise<NextResponse>} A JSON response with a success message if the deletion is successful, or an error message with the appropriate HTTP status code.
+ */
+export async function handleDeleteUser(id: string): Promise<NextResponse> {
 	try {
 		const deletedUser = await deleteUser(id);
 		if (!deletedUser) {
