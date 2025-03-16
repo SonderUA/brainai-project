@@ -1,0 +1,5 @@
+{
+	"entryPoints": ["server"],
+	"entryPointStrategy": "expand",
+	"out": "docs"
+}
