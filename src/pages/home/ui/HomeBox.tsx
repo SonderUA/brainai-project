@@ -6,20 +6,22 @@ interface HomeBoxProps {
 	className?: string;
 }
 
+const colorMap: Record<string, string> = {
+	article: "bg-purple-100",
+	video: "bg-primary-100",
+	image: "bg-yellow-100",
+	reimagine: "bg-blue-100",
+};
+
 export const HomeBox: React.FC<HomeBoxProps> = ({ text, img, className }) => {
 	const switchColor = (text: string) => {
-		const choice = text.toLowerCase().split(" ").at(-1);
-		switch (choice) {
-			case "article":
-				return "bg-purple-100";
-			case "video":
-				return "bg-primary-100";
-			case "image":
-				return "bg-yellow-100";
-			case "reimagine":
-				return "bg-blue-100";
-		}
+		const choice = text
+			.toLowerCase()
+			.split(" ")
+			.at(-1) as keyof typeof colorMap;
+		return colorMap[choice] || "";
 	};
+
 	return (
 		<div
 			className={cn(
