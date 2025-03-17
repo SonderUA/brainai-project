@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { buttonVariants } from "@/src/shared/ui/Button";
 import { usePathname } from "next/navigation";
+import { cn } from "@/src/shared/lib/cn";
 
 type NavlinkProps = {
 	text: string;
@@ -28,34 +29,40 @@ export const Navlink: React.FC<NavlinkProps> = ({
 
 	const isSelected = format(pathname) === format(href);
 
+	const baseVariant = isSelected
+		? main
+			? buttonVariants({
+					intent: "secondary",
+					size: "small",
+					className: "bg-white-500",
+			  })
+			: buttonVariants({
+					intent: "primary",
+					size: "small",
+			  })
+		: buttonVariants({
+				intent: "tertiary",
+				size: "small",
+		  });
+
 	return (
 		<Link
 			href={href}
-			className={`${center ? "justify-center" : ""} ${
-				isSelected
-					? main
-						? buttonVariants({
-								intent: "secondary",
-								size: "small",
-								className: "bg-white-500",
-						  })
-						: buttonVariants({
-								intent: "primary",
-								size: "small",
-						  })
-					: buttonVariants({
-							intent: "tertiary",
-							size: "small",
-					  })
-			} ${isSelected ? "text-primary-800" : ""} ${className}`}
+			className={cn(
+				center && "justify-center",
+				baseVariant,
+				isSelected && "text-primary-800",
+				className
+			)}
 		>
 			{svg !== undefined && svg}
 			<span
-				className={`text-inherit text-sm ${
-					isSelected && main
-						? "bg-text-gradient bg-clip-text text-transparent text-sm"
-						: ""
-				}`}
+				className={cn(
+					"text-inherit text-sm",
+					isSelected &&
+						main &&
+						"bg-text-gradient bg-clip-text text-transparent text-sm"
+				)}
 			>
 				{text}
 			</span>

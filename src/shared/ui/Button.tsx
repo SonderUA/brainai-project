@@ -1,5 +1,6 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/src/shared/lib/cn";
 
 const buttonVariants = cva(
 	"rounded-[0.625rem] cursor-pointer flex gap-2 font-medium items-center",
@@ -99,11 +100,10 @@ const Button: React.FC<ButtonProps> = ({
 			{svg !== undefined && svg}
 			{label !== undefined && (
 				<span
-					className={
-						intent === "secondary"
-							? "bg-text-gradient bg-clip-text text-transparent"
-							: undefined
-					}
+					className={cn(
+						intent === "secondary" &&
+							"bg-text-gradient bg-clip-text text-transparent"
+					)}
 				>
 					{label}
 				</span>

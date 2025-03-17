@@ -7,6 +7,7 @@ import { useArticleFormHandler } from "../hooks/useArticleFormHandler";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/src/app/store";
 import { ArticleError } from "./ArticleError";
+import { cn } from "@/src/shared/lib/cn";
 
 export default function ArticleLayout({
 	children,
@@ -52,11 +53,12 @@ export default function ArticleLayout({
 					noValidate
 				>
 					<div
-						className={`transition-all duration-300 ease-in-out rounded-lg flex border-2 ${
+						className={cn(
+							"transition-all duration-300 ease-in-out rounded-lg flex border-2",
 							errorMessage
 								? "border-purple-300"
 								: "border-transparent"
-						}`}
+						)}
 						onClick={() => setErrorMessage("")}
 					>
 						{children}

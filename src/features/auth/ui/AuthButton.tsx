@@ -1,6 +1,7 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { capitalize } from "@/src/shared/lib";
+import { cn } from "@/src/shared/lib/cn";
 
 interface AuthButtonProps {
 	/** Auth Provider */
@@ -21,11 +22,12 @@ export const AuthButton: React.FC<AuthButtonProps> = ({
 }) => {
 	return (
 		<button
-			className={`flex gap-2.5 py-2.5 px-7 rounded-[0.625rem] items-center ${
+			className={cn(
+				"flex gap-2.5 py-2.5 px-7 rounded-[0.625rem] items-center",
 				intent === "primary"
 					? "bg-primary-gradient text-white-500"
 					: "bg-white-500 gradient-border text-neutral-300"
-			}`}
+			)}
 			onClick={() => signIn(provider, { redirectTo: "/" })}
 		>
 			{svg}

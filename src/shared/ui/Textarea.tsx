@@ -1,3 +1,5 @@
+import { cn } from "@/src/shared/lib/cn";
+
 interface TextareaProps
 	extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
 	/** Textarea id */
@@ -11,7 +13,7 @@ interface TextareaProps
 export const Textarea: React.FC<TextareaProps> = ({ className, ...props }) => {
 	return (
 		<textarea
-			className={`input-base resize-none bg-weak-100 ${className}`}
+			className={cn("input-base resize-none bg-weak-100", className)}
 			data-testid={props.id}
 			{...props}
 		></textarea>

@@ -2,6 +2,7 @@ import { ArticleIcon, ImageIcon, VideoIcon } from "@/src/shared/ui/icons";
 import Link from "next/link";
 import { capitalize } from "@/src/shared/lib";
 import { JSX } from "react";
+import { cn } from "@/src/shared/lib/cn";
 
 interface HomeLinkProps {
 	href: string;
@@ -41,7 +42,10 @@ export const HomeLink: React.FC<HomeLinkProps> = ({
 	return (
 		<Link
 			href={href}
-			className={`flex p-3.5 rounded-[0.625rem] justify-between items-center bg-weak-100 font-{--font-roboto} ${className}`}
+			className={cn(
+				"flex p-3.5 rounded-[0.625rem] justify-between items-center bg-weak-100 font-{--font-roboto}",
+				className
+			)}
 		>
 			<div className="flex gap-2.5">
 				{icon}

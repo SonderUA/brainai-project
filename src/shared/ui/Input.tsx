@@ -1,3 +1,5 @@
+import { cn } from "@/src/shared/lib/cn";
+
 export interface InputProps
 	extends React.InputHTMLAttributes<HTMLInputElement> {
 	/** Input id */
@@ -26,7 +28,7 @@ export const Input: React.FC<InputProps> = ({
 				</label>
 			)}
 			<input
-				className={`input-base ${className}`}
+				className={cn("input-base", className)}
 				data-testid={props.id}
 				autoComplete="off"
 				{...props}

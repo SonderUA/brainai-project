@@ -1,3 +1,5 @@
+import { cn } from "@/src/shared/lib/cn";
+
 interface HomeBoxProps {
 	text: string;
 	img: React.ReactElement;
@@ -20,9 +22,11 @@ export const HomeBox: React.FC<HomeBoxProps> = ({ text, img, className }) => {
 	};
 	return (
 		<div
-			className={`flex flex-col pt-4 pl-[0.3125rem] gap-4 w-65.5 rounded-lg ${className} ${switchColor(
-				text
-			)}`}
+			className={cn(
+				"flex flex-col pt-4 pl-[0.3125rem] gap-4 w-65.5 rounded-lg",
+				switchColor(text),
+				className
+			)}
 		>
 			<p className="text-neutral-600 text-lg ml-[0.6875rem] font-medium">
 				{text}

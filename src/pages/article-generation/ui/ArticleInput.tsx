@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/src/app/store";
 import { JSX } from "react";
-import React from "react";
 
 const inputMapping: Record<string, JSX.Element> = {
 	prompt: (

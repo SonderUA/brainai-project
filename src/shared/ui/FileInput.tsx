@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { cn } from "@/src/shared/lib/cn";
 
 interface FileInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	/** Input id */
@@ -51,7 +52,10 @@ export const FileInput: React.FC<FileInputProps> = ({
 			/>
 			<label
 				htmlFor={props.id}
-				className={`input-base flex items-center justify-between bg-weak-100 cursor-pointer ${className}`}
+				className={cn(
+					"input-base flex items-center justify-between bg-weak-100 cursor-pointer",
+					className
+				)}
 			>
 				{selectedFile
 					? selectedFile.name

@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { buttonVariants } from "./Button";
 import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "@/src/shared/lib/cn";
 
 export interface SelectProps {
 	/** Select ID */
@@ -79,9 +80,10 @@ export const Select: React.FC<SelectProps> = ({
 						<img
 							src="/arrow-down.svg"
 							alt="a dropdown arrow"
-							className={`w-4 h-2.5 transition-transform duration-500 ease-in-out ${
-								isOpen ? "rotate-180" : ""
-							}`}
+							className={cn(
+								"w-4 h-2.5 transition-transform duration-500 ease-in-out",
+								isOpen && "rotate-180"
+							)}
 						/>
 					</div>
 				</button>
@@ -118,10 +120,11 @@ export const Select: React.FC<SelectProps> = ({
 										onClick={() =>
 											handleOptionClick(option)
 										}
-										className={`cursor-default select-none relative bg-white-500 ${
+										className={cn(
+											"cursor-default select-none relative bg-white-500",
 											selectedOption &&
-											selectedOption.value ===
-												option.value
+												selectedOption.value ===
+													option.value
 												? buttonVariants({
 														intent: "secondary",
 														size: "medium",
@@ -130,16 +133,16 @@ export const Select: React.FC<SelectProps> = ({
 														intent: "tertiary",
 														size: "medium",
 												  })
-										}`}
+										)}
 									>
 										<span
-											className={`block truncate font-medium text-base ${
+											className={cn(
+												"block truncate font-medium text-base",
 												selectedOption &&
-												selectedOption.value ===
-													option.value
-													? "bg-text-gradient bg-clip-text text-transparent"
-													: ""
-											}`}
+													selectedOption.value ===
+														option.value &&
+													"bg-text-gradient bg-clip-text text-transparent"
+											)}
 										>
 											{option.label}
 										</span>

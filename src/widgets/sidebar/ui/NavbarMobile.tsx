@@ -4,6 +4,7 @@ import { Footer } from "./Footer";
 import { MainLinks } from "../config";
 import { AnimatePresence, motion } from "framer-motion";
 import { Navlink } from "@/src/shared/ui";
+import { cn } from "@/src/shared/lib/cn";
 
 export const NavbarMobile = () => {
 	const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -30,9 +31,10 @@ export const NavbarMobile = () => {
 							<img
 								src="/sidebar/arrow-down.svg"
 								alt="a dropdown arrow"
-								className={`w-4 h-2.5 transition-transform duration-500 ease-in-out ${
-									activeIndex === idx ? "rotate-180" : ""
-								}`}
+								className={cn(
+									"w-4 h-2.5 transition-transform duration-500 ease-in-out",
+									activeIndex === idx && "rotate-180"
+								)}
 							/>
 						</button>
 					</div>
