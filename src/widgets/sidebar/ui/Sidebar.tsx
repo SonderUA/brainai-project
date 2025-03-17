@@ -10,9 +10,7 @@ export const Sidebar = async () => {
 	let user: User | null = null;
 	if (session?.user?.id) {
 		const response = await fetch(
-			`http://localhost:3000/api/user?id=${encodeURIComponent(
-				session.user.id
-			)}`
+			`/api/user?id=${encodeURIComponent(session.user.id)}`
 		);
 		user = await response.json();
 	}
