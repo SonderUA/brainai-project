@@ -1,4 +1,5 @@
 import * as fsPromises from "fs/promises";
+import * as fs from "fs";
 import { Readable } from "stream";
 import { pipeline } from "stream/promises";
 import { logger } from "@/server/shared/logger";
@@ -8,7 +9,7 @@ import { withTimeout } from "@/server/shared/utils/timeout";
 import { execFile } from "child_process";
 import { promisify } from "util";
 import { extractErrorMessage } from "@/server/shared/utils/extractError";
-import * as fs from "fs";
+import PDFParser from "pdf2json";
 
 export class MediaExtractionService {
 	constructor(private openAIService: OpenAIService) {}
@@ -120,25 +121,21 @@ export class MediaExtractionService {
 		}
 	}
 
-	/**
-	 * Processes a document buffer based on its extension.
-	 * Supports PDF and plain text files.
-	 * @param buffer - The document buffer.
-	 * @param ext - The file extension (e.g., ".pdf" or ".txt").
-	 * @returns The extracted text from the document.
-	 */
 	async processDocumentFromBuffer(
 		buffer: Buffer,
 		ext: string
 	): Promise<string> {
 		try {
 			const lowerExt = ext.toLowerCase();
+
 			if (lowerExt === ".pdf") {
-				// TODO: Implement actual PDF parsing (e.g., using pdf-parse)
-				const data = "some text, not actual pdf parsing";
-				return data.trim();
+				const extractedText = await this.extractTextFromPDFBuffer(
+					buffer
+				);
+				return this.openAIService.boilTextDown(extractedText.trim());
 			} else if (lowerExt === ".txt") {
-				return buffer.toString("utf-8").trim();
+				const data = buffer.toString("utf-8").trim();
+				return this.openAIService.boilTextDown(data);
 			} else {
 				const msg = `Unsupported document format: ${ext}`;
 				logger.error(msg);
@@ -149,6 +146,30 @@ export class MediaExtractionService {
 			logger.error("Error processing document:", errorMsg);
 			throw new Error(`Document processing failed: ${errorMsg}`);
 		}
+	}
+
+	/**
+	 * @private
+	 * Extracts text from a PDF buffer using pdf2json.
+	 * @param buffer - The PDF buffer.
+	 * @returns A promise that resolves with the extracted text.
+	 */
+	private extractTextFromPDFBuffer(buffer: Buffer): Promise<string> {
+		return new Promise((resolve, reject) => {
+			const pdfParser = new PDFParser();
+
+			pdfParser.on("pdfParser_dataError", (errData) => {
+				console.error("Error parsing PDF:", errData.parserError);
+				reject(errData.parserError);
+			});
+
+			pdfParser.on("pdfParser_dataReady", () => {
+				const extractedText = pdfParser.getRawTextContent();
+				resolve(extractedText);
+			});
+
+			pdfParser.parseBuffer(buffer);
+		});
 	}
 
 	/**

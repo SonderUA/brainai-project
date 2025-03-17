@@ -48,7 +48,7 @@ const inputMapping: Record<string, JSX.Element> = {
 			id="document"
 			name="file"
 			className="h-20"
-			accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+			accept=".doc,.docx,.pdf,.txt"
 			required
 		/>
 	),
