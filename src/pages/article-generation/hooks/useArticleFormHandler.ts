@@ -3,6 +3,16 @@ import { FormEvent, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/src/app/store";
 import { useSession } from "next-auth/react";
+import { z } from "zod";
+
+const articleSchema = z.object({
+	userID: z.string().min(1, "User ID is required"),
+	language: z.string().min(1, "Language is required"),
+	length: z.string().min(1, "Length is required"),
+	style: z.string().min(1, "Style is required"),
+	source: z.enum(["local", "weblink", "prompt"]),
+	input: z.union([z.string(), z.instanceof(File)]),
+});
 
 export function useArticleFormHandler() {
 	const { data: session } = useSession();
@@ -28,7 +38,6 @@ export function useArticleFormHandler() {
 			const weblink = formData.get("weblink") as string | null;
 			const textarea = formData.get("textarea") as string | null;
 
-			// Determine input and source based on provided fields
 			const input = file?.size ? file : textarea || weblink;
 			const source = file?.size
 				? "local"
@@ -36,15 +45,23 @@ export function useArticleFormHandler() {
 				? "weblink"
 				: "prompt";
 
-			if (
-				!userID ||
-				!articleForm.selects[0].value ||
-				!articleForm.selects[1].value ||
-				!articleForm.selects[2].value ||
-				!source ||
-				!input
-			) {
-				setErrorMessage("Missing required fields");
+			try {
+				articleSchema.parse({
+					userID,
+					language: articleForm.selects[0].value,
+					length: articleForm.selects[1].value,
+					style: articleForm.selects[2].value,
+					source,
+					input,
+				});
+			} catch (err) {
+				if (err instanceof z.ZodError) {
+					setErrorMessage(
+						err.errors.map((e) => e.message).join(", ")
+					);
+				} else {
+					setErrorMessage("Validation error");
+				}
 				return;
 			}
 
