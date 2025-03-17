@@ -12,14 +12,14 @@ type NavlinkProps = {
 	className?: string;
 };
 
-export const Navlink = ({
+export const Navlink: React.FC<NavlinkProps> = ({
 	text,
 	href,
 	svg,
 	main = true,
 	center = false,
 	className,
-}: NavlinkProps) => {
+}) => {
 	const pathname = usePathname()!;
 	const format = (text: string) => {
 		if (main) return `/${text.slice(1).split("/")[0]}`;

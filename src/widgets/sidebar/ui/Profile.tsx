@@ -8,13 +8,13 @@ interface ProfileProps {
 	className?: string;
 }
 
-export const Profile = ({
+export const Profile: React.FC<ProfileProps> = ({
 	username,
 	tokens,
 	plan,
 	img,
 	className,
-}: ProfileProps) => {
+}) => {
 	return (
 		<section
 			className={`flex max-lg-tablet:justify-between max-lg-tablet:w-full lg-tablet:flex-col p-2.5 rounded-lg gap-2.5 bg-primary-gradient w-fit ${className}`}

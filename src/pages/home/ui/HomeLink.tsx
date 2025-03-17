@@ -25,7 +25,11 @@ const formatLabel = (source: string, output: string) => {
 	return `${capitalize(source)} to ${capitalize(output)}`;
 };
 
-export const HomeLink = ({ href, amount, className }: HomeLinkProps) => {
+export const HomeLink: React.FC<HomeLinkProps> = ({
+	href,
+	amount,
+	className,
+}) => {
 	const segments = href.split("/");
 
 	const source = segments[1];

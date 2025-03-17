@@ -18,14 +18,14 @@ export interface SelectProps {
 	onSelect: (option: { value: string; label: string }) => void;
 }
 
-export const Select = ({
+export const Select: React.FC<SelectProps> = ({
 	id,
 	label,
 	options,
 	placeholder = "Select an option",
 	selectedOption,
 	onSelect,
-}: SelectProps) => {
+}) => {
 	const selectRef = useRef<HTMLDivElement | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
 

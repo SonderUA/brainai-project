@@ -8,7 +8,7 @@ interface TextareaProps
 	className?: string;
 }
 
-export const Textarea = ({ className, ...props }: TextareaProps) => {
+export const Textarea: React.FC<TextareaProps> = ({ className, ...props }) => {
 	return (
 		<textarea
 			className={`input-base resize-none bg-weak-100 ${className}`}

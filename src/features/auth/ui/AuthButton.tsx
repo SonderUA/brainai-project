@@ -13,12 +13,12 @@ interface AuthButtonProps {
 	svg: React.ReactElement;
 }
 
-export const AuthButton = ({
+export const AuthButton: React.FC<AuthButtonProps> = ({
 	provider,
 	intent = "primary",
 	icon = false,
 	svg,
-}: AuthButtonProps) => {
+}) => {
 	return (
 		<button
 			className={`flex gap-2.5 py-2.5 px-7 rounded-[0.625rem] items-center ${

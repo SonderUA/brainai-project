@@ -12,7 +12,11 @@ interface FileInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 }
 
-export const FileInput = ({ className, accept, ...props }: FileInputProps) => {
+export const FileInput: React.FC<FileInputProps> = ({
+	className,
+	accept,
+	...props
+}) => {
 	const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
 	const switchInput = (input: string) => {

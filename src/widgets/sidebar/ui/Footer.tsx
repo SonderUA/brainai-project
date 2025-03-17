@@ -6,7 +6,7 @@ interface FooterProps {
 	className?: string;
 }
 
-export const Footer = ({ className }: FooterProps) => {
+export const Footer: React.FC<FooterProps> = ({ className }) => {
 	const links = ["Terms", "DMCA", "Affiliates"];
 	return (
 		<footer className={className}>

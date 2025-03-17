@@ -4,7 +4,7 @@ interface HomeBoxProps {
 	className?: string;
 }
 
-export const HomeBox = ({ text, img, className }: HomeBoxProps) => {
+export const HomeBox: React.FC<HomeBoxProps> = ({ text, img, className }) => {
 	const switchColor = (text: string) => {
 		const choice = text.toLowerCase().split(" ").at(-1);
 		switch (choice) {

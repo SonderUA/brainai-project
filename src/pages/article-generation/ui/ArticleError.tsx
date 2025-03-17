@@ -6,7 +6,10 @@ interface ArticleErrorProps {
 	onClose?: () => void;
 }
 
-export const ArticleError = ({ errorMessage, onClose }: ArticleErrorProps) => {
+export const ArticleError: React.FC<ArticleErrorProps> = ({
+	errorMessage,
+	onClose,
+}) => {
 	return (
 		<span
 			className={`transition-all duration-500 ease-in-out text-xs text-purple-600 ${

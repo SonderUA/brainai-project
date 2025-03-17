@@ -12,12 +12,12 @@ export interface InputProps
 	linkLabel?: string;
 }
 
-export const Input = ({
+export const Input: React.FC<InputProps> = ({
 	label,
 	linkLabel,
 	className,
 	...props
-}: InputProps) => {
+}) => {
 	return (
 		<div className="flex gap-1.5 flex-col w-full">
 			{label !== undefined && (
