@@ -20,6 +20,11 @@ const iconMapping: Record<string, JSX.Element> = {
 	image: (
 		<ImageIcon className="w-10 h-10 p-2 rounded-lg bg-yellow-400 text-white-500" />
 	),
+	default: (
+		<div className="w-10 h-10 p-2 rounded-lg bg-white-700 text-white-500 flex items-center justify-center text-xl">
+			?
+		</div>
+	),
 };
 
 const formatLabel = (source: string, output: string) => {
@@ -33,8 +38,8 @@ export const HomeLink: React.FC<HomeLinkProps> = ({
 }) => {
 	const segments = href.split("/");
 
-	const source = segments[1];
-	const output = segments[0].split("-")[0];
+	const source = segments[1] || "default";
+	const output = segments[0].split("-")[0] || "default";
 
 	const icon = iconMapping[output];
 	const label = formatLabel(source, output);
